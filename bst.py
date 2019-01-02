@@ -28,9 +28,6 @@ class BST:
             self.root = Node(value)
             return self.root
 
-        if value == self.root.value:
-            return None
-
         return self.__insert(self.root, value)
 
     def traverse(self, mode):
@@ -68,7 +65,9 @@ class BST:
             return self.__search(node.right, value)
 
     def __insert(self, node, value):
-        if value < node.value:
+        if value == node.value:
+            return None
+        elif value < node.value:
             if node.left == None:
                 node.left = Node(value)
                 return node.left

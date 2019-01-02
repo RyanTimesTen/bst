@@ -13,10 +13,18 @@ class TestBSTInsert(TestBSTBase):
         self.assertIsNotNone(self.subject.root)
         self.assertEqual(self.subject.root, result)
 
-    def test_duplicate(self):
+    def test_duplicate_at_root(self):
         self.subject.insert(100)
 
         result = self.subject.insert(100)
+
+        self.assertIsNone(result)
+
+    def test_duplicate(self):
+        self.subject.insert(100)
+        self.subject.insert(200)
+
+        result = self.subject.insert(200)
 
         self.assertIsNone(result)
 
