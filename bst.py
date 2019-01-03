@@ -50,6 +50,12 @@ class BST:
 
         return values
 
+    def calculate_height(self):
+        if self.root is None:
+            return None
+
+        return self.__calculate_depth_of_deepest_node(self.root)
+
     def __search(self, node, value):
         if value == node.value:
             return node
@@ -108,3 +114,18 @@ class BST:
         if node.right:
             self.__postorder(node.right, values)
         values.append(node.value)
+
+    def __calculate_depth_of_deepest_node(self, node):
+        if self.__is_leaf(node):
+            return 0
+        elif node.left and node.right:
+            return 1 + max(
+                self.__calculate_depth_of_deepest_node(node.left),
+                self.__calculate_depth_of_deepest_node(node.right))
+        elif node.left:
+            return 1 + self.__calculate_depth_of_deepest_node(node.left)
+        else:
+            return 1 + self.__calculate_depth_of_deepest_node(node.right)
+
+    def __is_leaf(self, node):
+        return node.left is None and node.right is None

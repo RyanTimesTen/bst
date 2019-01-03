@@ -456,5 +456,39 @@ class TestBSTPostorderTraversal(TestBSTBase):
 
         self.assertEqual(len(result), 200_00_000)
 
+class TestBSTTreeHeight(TestBSTBase):
+    def test_null(self):
+        result = self.subject.calculate_height()
+
+        self.assertIsNone(result)
+
+    def test_root(self):
+        self.subject.root = Node(5)
+
+        result = self.subject.calculate_height()
+
+        self.assertEqual(0, result)
+
+    def test_height_small(self):
+        self.subject.root = Node(6)
+        self.subject.root.left = Node(4)
+        self.subject.root.right = Node(100)
+        self.subject.root.left.left = Node(2)
+        self.subject.root.left.right = Node(5)
+        self.subject.root.right.left = Node(8)
+        self.subject.root.right.left.left = Node(7)
+
+        result = self.subject.calculate_height()
+
+        self.assertEqual(3, result)
+
+    def test_height_one(self):
+        self.subject.root = Node(5)
+        self.subject.root.right = Node(8)
+
+        result = self.subject.calculate_height()
+
+        self.assertEqual(1, result)
+
 if __name__ == '__main__':
     unittest.main()
