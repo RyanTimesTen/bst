@@ -45,6 +45,8 @@ class BST:
             self.__inorder(self.root, values)
         elif mode == 'preorder':
             self.__preorder(self.root, values)
+        elif mode == 'postorder':
+            self.__postorder(self.root, values)
 
         return values
 
@@ -99,3 +101,10 @@ class BST:
             self.__preorder(node.left, values)
         if node.right:
             self.__preorder(node.right, values)
+
+    def __postorder(self, node, values):
+        if node.left:
+            self.__postorder(node.left, values)
+        if node.right:
+            self.__postorder(node.right, values)
+        values.append(node.value)
