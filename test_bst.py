@@ -6,6 +6,23 @@ class TestBSTBase(unittest.TestCase):
     def setUp(self):
         self.subject = BST()
 
+    def setup_full_tree(self):
+        self.subject.root = Node(25)
+        self.subject.root.left = Node(15)
+        self.subject.root.right = Node(50)
+        self.subject.root.left.left = Node(10)
+        self.subject.root.left.right = Node(22)
+        self.subject.root.left.left.left = Node(4)
+        self.subject.root.left.left.right = Node(12)
+        self.subject.root.left.right.left = Node(18)
+        self.subject.root.left.right.right = Node(24)
+        self.subject.root.right.left = Node(35)
+        self.subject.root.right.right = Node(70)
+        self.subject.root.right.left.left = Node(31)
+        self.subject.root.right.left.right = Node(44)
+        self.subject.root.right.right.left = Node(66)
+        self.subject.root.right.right.right = Node(90)
+
 class TestBSTInsert(TestBSTBase):
     def test_null(self):
         result = self.subject.insert(100)
@@ -169,6 +186,13 @@ class TestBSTLevelOrderTraversal(TestBSTBase):
 
         self.assertEqual([10, 8, 12, 9, 11], result)
 
+    def test_full_tree(self):
+        self.setup_full_tree()
+
+        result = self.subject.traverse(mode='level_order')
+
+        self.assertEqual([25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90], result)
+
     def test_medium_tree(self):
         for i in range(-400, 400):
             self.subject.insert(i)
@@ -243,6 +267,13 @@ class TestBSTInorderTraversal(TestBSTBase):
         result = self.subject.traverse(mode='inorder')
 
         self.assertEqual([8, 9, 10, 11, 12], result)
+
+    def test_full_tree(self):
+        self.setup_full_tree()
+
+        result = self.subject.traverse(mode='inorder')
+
+        self.assertEqual([4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90], result)
 
     def test_medium_tree(self):
         for i in range(-400, 400):
@@ -319,6 +350,13 @@ class TestBSTPreorderTraversal(TestBSTBase):
 
         self.assertEqual([10, 8, 9, 12, 11], result)
 
+    def test_full_tree(self):
+        self.setup_full_tree()
+
+        result = self.subject.traverse(mode='preorder')
+
+        self.assertEqual([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90], result)
+
     def test_medium_tree(self):
         for i in range(-400, 400):
             self.subject.insert(i)
@@ -393,6 +431,13 @@ class TestBSTPostorderTraversal(TestBSTBase):
         result = self.subject.traverse(mode='postorder')
 
         self.assertEqual([9, 8, 11, 12, 10], result)
+
+    def test_full_tree(self):
+        self.setup_full_tree()
+
+        result = self.subject.traverse(mode='postorder')
+
+        self.assertEqual([4, 12, 10, 18, 24, 22, 15, 31, 44, 35, 66, 90, 70, 50, 25], result)
 
     def test_medium_tree(self):
         for i in range(-400, 400):
