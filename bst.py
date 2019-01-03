@@ -30,7 +30,7 @@ class BST:
 
         return self.__insert(self.root, value)
 
-    def traverse(self, mode):
+    def traverse(self, mode='level_order'):
         if self.root == None:
             return None
 
