@@ -35,26 +35,16 @@ class BST:
             return None
 
         values = []
-        unvisited = Queue()
-        unvisited.put(self.root)
 
-        self.__level_order(values, unvisited)
+        if mode == 'level_order':
+            unvisited = Queue()
+            unvisited.put(self.root)
+
+            self.__level_order(values, unvisited)
+        elif mode == 'inorder':
+            self.__inorder(self.root, values)
 
         return values
-
-    def __level_order(self, values, unvisited):
-        if unvisited.empty():
-            return
-
-        node = unvisited.get()
-        values.append(node.value)
-
-        if node.left:
-            unvisited.put(node.left)
-        if node.right:
-            unvisited.put(node.right)
-
-        self.__level_order(values, unvisited)
 
     def __search(self, node, value):
         if value == node.value:
@@ -79,3 +69,24 @@ class BST:
                 return node.right
             else:
                 return self.__insert(node.right, value)
+
+    def __level_order(self, values, unvisited):
+        if unvisited.empty():
+            return
+
+        node = unvisited.get()
+        values.append(node.value)
+
+        if node.left:
+            unvisited.put(node.left)
+        if node.right:
+            unvisited.put(node.right)
+
+        self.__level_order(values, unvisited)
+
+    def __inorder(self, node, values):
+        if node.left:
+            self.__inorder(node.left, values)
+        values.append(node.value)
+        if node.right:
+            self.__inorder(node.right, values)
