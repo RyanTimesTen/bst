@@ -162,12 +162,12 @@ class TestBSTLevelOrderTraversal(TestBSTBase):
         self.subject.root = Node(10)
         self.subject.root.left = Node(8)
         self.subject.root.right = Node(12)
-        self.subject.root.left.right = Node(5)
+        self.subject.root.left.right = Node(9)
         self.subject.root.right.left = Node(11)
 
         result = self.subject.traverse(mode='level_order')
 
-        self.assertEqual([10, 8, 12, 5, 11], result)
+        self.assertEqual([10, 8, 12, 9, 11], result)
 
     def test_medium_tree(self):
         for i in range(-400, 400):
@@ -237,12 +237,12 @@ class TestBSTInorderTraversal(TestBSTBase):
         self.subject.root = Node(10)
         self.subject.root.left = Node(8)
         self.subject.root.right = Node(12)
-        self.subject.root.left.right = Node(5)
+        self.subject.root.left.right = Node(9)
         self.subject.root.right.left = Node(11)
 
         result = self.subject.traverse(mode='inorder')
 
-        self.assertEqual([8, 5, 10, 11, 12], result)
+        self.assertEqual([8, 9, 10, 11, 12], result)
 
     def test_medium_tree(self):
         for i in range(-400, 400):
