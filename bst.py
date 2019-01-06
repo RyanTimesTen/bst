@@ -18,20 +18,20 @@ class BST:
         self.root = None
 
     def search(self, value):
-        if self.root == None:
+        if self.root is None:
             return None
 
         return self.__search(self.root, value)
 
     def insert(self, value):
-        if self.root == None:
+        if self.root is None:
             self.root = Node(value)
             return self.root
 
         return self.__insert(self.root, value)
 
     def traverse(self, mode='level_order'):
-        if self.root == None:
+        if self.root is None:
             return None
 
         values = []
@@ -59,7 +59,7 @@ class BST:
     def __search(self, node, value):
         if node is None:
             return None
-            
+
         if value == node.value:
             return node
         elif value < node.value:
@@ -71,13 +71,13 @@ class BST:
         if value == node.value:
             return None
         elif value < node.value:
-            if node.left == None:
+            if node.left is None:
                 node.left = Node(value)
                 return node.left
             else:
                 return self.__insert(node.left, value)
         else:
-            if node.right == None:
+            if node.right is None:
                 node.right = Node(value)
                 return node.right
             else:
