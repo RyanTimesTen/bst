@@ -1,4 +1,6 @@
 __pycache__
 .vscode
 .coverage
-
+build
+dist
+bst.egg-info
