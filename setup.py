@@ -54,7 +54,7 @@ setup(
     long_description_content_type='text/markdown',
     author='Ryan Gilbert',
     author_email='ryangilbert7926@gmail.com',
-    python_requires='>=2.7',
+    python_requires='>=3.6',
     url='https://github.com/rgilbert1/bst',
     py_modules=['bst'],
     include_package_data=True,
