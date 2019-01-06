@@ -6,7 +6,7 @@ import sys
 from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
-VERSION = '0.1.0'
+VERSION = '0.5.0'
 
 here = os.path.abspath(os.path.dirname(__file__))
 
