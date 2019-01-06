@@ -74,6 +74,13 @@ class TestBSTSearch(TestBSTBase):
 
         self.assertEqual(Node(100), result)
 
+    def test_not_found(self):
+        self.subject.root = Node(100)
+
+        result = self.subject.search(99)
+
+        self.assertEqual(None, result)
+
     def test_left(self):
         self.subject.root = Node(100)
         self.subject.root.left = Node(50)

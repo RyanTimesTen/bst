@@ -57,6 +57,9 @@ class BST:
         return self.__calculate_depth_of_deepest_node(self.root)
 
     def __search(self, node, value):
+        if node is None:
+            return None
+            
         if value == node.value:
             return node
         elif value < node.value:
