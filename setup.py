@@ -1,30 +1,17 @@
 #!/usr/bin/env python
 
-# Note: To use the 'upload' functionality of this file, you must:
-#   $ pip install twine
-
 import io
 import os
 import sys
 from shutil import rmtree
-
 from setuptools import find_packages, setup, Command
 
-NAME = 'bst'
-DESCRIPTION = 'A binary search tree implemented for learning purposes.'
-URL = 'https://github.com/rgilbert1/bst'
-EMAIL = 'ryangilbert7926@gmail.com'
-AUTHOR = 'Ryan Gilbert'
-REQUIRES_PYTHON = '>=3.6.0'
 VERSION = '0.1.0'
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-try:
-    with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
-        long_description = '\n' + f.read()
-except FileNotFoundError:
-    long_description = DESCRIPTION
+with open(os.path.join(here, 'README.md')) as f:
+    long_description = f.read()
 
 class UploadCommand(Command):
     description = 'Build and publish the package.'
@@ -60,19 +47,18 @@ class UploadCommand(Command):
         sys.exit()
 
 setup(
-    name=NAME,
+    name='bst',
     version=VERSION,
-    description=DESCRIPTION,
+    description='A binary search tree implemented for learning purposes.',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    author=AUTHOR,
-    author_email=EMAIL,
-    python_requires=REQUIRES_PYTHON,
-    url=URL,
+    author='Ryan Gilbert',
+    author_email='ryangilbert7926@gmail.com',
+    python_requires='>=2.7',
+    url='https://github.com/rgilbert1/bst',
     py_modules=['bst'],
     include_package_data=True,
     license='MIT',
-    # $ setup.py publish support.
     cmdclass={
         'upload': UploadCommand,
     },
